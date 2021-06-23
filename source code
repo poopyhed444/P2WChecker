@@ -1,0 +1,79 @@
+# Import stuff
+
+import sys, os, curses, time
+
+red = "\033[0;31m"
+bright_red = "\033[0;91m"
+bright_cyan = "\033[0;96m"
+bright_white = "\033[0;97m"
+
+# Text Scroll & Colours
+def scroll(str):
+	for letter in str:
+		sys.stdout.write(bright_white + letter)
+		sys.stdout.flush()
+		time.sleep(0.075)
+scroll("")
+
+time.sleep(0.5)
+scroll("Hello! Welcome to WG's \nAnti-P2W Checker!")
+
+time.sleep(1.0)
+os.system('clear')
+
+time.sleep(0.5)
+scroll("Let's begin. First, what is the name of the server\nyou'd like to lag/dupe on?\n>>> ")
+myServer = input()
+
+time.sleep(1.0)
+scroll("I see. Your server is " + myServer + "?\nThe first step is to answer a few questions about " + myServer)
+
+scroll("\nDoes this server sell /fly or /god? Answer Yes or No.\n>>> ")
+Selection1 = input()
+if Selection1 == ("Yes"):
+	scroll("Interesting. /fly and/or /god are both hallmarks of a P2W server. Let's check the other perks as well.")
+if Selection1 == ("No"):
+	scroll("I see.")
+
+time.sleep(1.5)
+os.system('clear')
+
+scroll("Alright, second question. Does this server sell kits containing armour and/or tools? For instance, a kit that sells enchanted diamond armour? Answer Yes or No\n>>> ")
+Selection2 = input()
+
+if Selection2 == ("Yes"):
+	scroll("Kits are often a big sign of P2W servers. That, and /fly or /god, are huge signs of a P2W server. Especially look out for kits that are incredibly OP, or contain non-vanilla items or enchants")
+
+if Selection2 == ("No"):
+	scroll("Kits are a big sign of P2W, but just because they aren't there, doesn't mean it isn't P2W.")
+
+time.sleep(2.0)
+os.system('clear')
+
+scroll("Alright! The last question is, can you buy in-game currency from the server shop? For instance, MCMMO coins/cash, gems, etc.? Answer Yes or No\n>>> ")
+
+Selection3 = input()
+
+if Selection3 == ("Yes"):
+	scroll("Selling in-game currency for real money is a huge sign of P2W. Coupled with other things, the server is almost certainly P2W.\n")
+
+if Selection3 == ("No"):
+	scroll("Currency isn't the most common thing to be sold. It breaks a server's economy.")
+
+
+time.sleep(1.0)
+scroll("If you answered Yes to all the questions, the server you are looking at is almost certainly P2W.")
+
+time.sleep(0.5)
+scroll("\nIf you only answered yes to 1 or 2 questions, the server is likely semi-P2W, or offers other P2W features.")
+
+time.sleep(0.5)
+scroll("If you answered No to all the questions, the server is likely not P2W.\nIf you have any questions or concerns, ask your mentor for help.")
+
+print("\n\nThanks for using WG's P2W checker!")
+
+## 1.1 Patch Notes: 
+# Changed True and False to Yes and No
+# Added Text Scroll to the final segment of text
+# I will add more questions later 
+# If I should add more notes explaining what each line of code means, @ me on Guilded
