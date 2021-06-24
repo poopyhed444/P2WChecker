@@ -1,79 +1,189 @@
-# Import stuff
+<!DOCTYPE html>
 
-import sys, os, curses, time
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Is this server Paid to Win?</title>
+</head>
+<body>
+    <style>
+        #frame001 {
+            border-radius: 5px;
+            background-color: white;
+            border: 2px solid black;
+            height: 350px;
+            width: 400px;
+        }
 
-red = "\033[0;31m"
-bright_red = "\033[0;91m"
-bright_cyan = "\033[0;96m"
-bright_white = "\033[0;97m"
+        .buttons001 {
+            background-color: dodgerblue;
+            color: white;
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
-# Text Scroll & Colours
-def scroll(str):
-	for letter in str:
-		sys.stdout.write(bright_white + letter)
-		sys.stdout.flush()
-		time.sleep(0.075)
-scroll("")
+        .buttons002 {
+            background-color: blue;
+            color: white;
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
-time.sleep(0.5)
-scroll("Hello! Welcome to WG's \nAnti-P2W Checker!")
+        #font001 {
+            text-align: center;
+            font-size: large;
+            color: black;
+        }
+    </style>
+    <div id="frame001">
+        <div id="font001">
+            <h2>Is this server Paid to Win?</h2><text>Question: <text id="number001">0</text></text><br />
+            <text>Score: <text id="score001">0</text></text>
+            <hr />
+            <div id="disappear001">
+                <button class="buttons002" onclick="begin001()">Begin</button>
+            </div>
+            <p id="message001"></p>
+            <p id="message002"></p>
+            <p id="message003"></p>
+            <p id="message004"></p>
+        </div>
+    </div>
+    <script>
+        var question001 = ["Does it sells crates that give you a competitive advantage?",
+            "Does it sell a perk such as /fly?",
+            "Does it sell a perk such as /repair?",
+            "Does it sell XP Boosters that don't operate  on the network level?",
+            "Does it sell unbreakable armor or insanely powerful armor?",
+            "Does it sell a perk such as infinite /sethome?",
+            "Does it sell mob spawners?",
+            "Does it sell in game currency that can be used to purchase non cosmetic items?",
+            "Does it have a refund policy in case there was an unauthorized purchase on the credit card?",
+            "Does it sell extra claim blocks?"
+        ];
 
-time.sleep(1.0)
-os.system('clear')
+        var options001 = ["<button class=buttons001 onclick=q1i()>Yes</button><br /><br /><button class=buttons001 onclick=q1c()>No</button>"];
+        var options002 = ["<button class=buttons001 onclick=q1c()>No</button><br /><br /><button class=buttons001 onclick=q1i()>Yes</button>"];
+        var options003 = ["<button class=buttons001 onclick=q1c()>Yes</button><br /><br /><button class=buttons001 onclick=q1i()>No</button>"];
+        var options004 = ["<button class=buttons001 onclick=q1i()>Yes</button><br /><br /><button class=buttons001 onclick=q1c()>No</button>"];
+        var options005 = ["<button class=buttons001 onclick=q1c()>No</button><br /><br /><button class=buttons001 onclick=q1i()>Yes</button>"];
+        var options006 = ["<button class=buttons001 onclick=q1i()>Yes</button><br /><br /><button class=buttons001 onclick=q1c()>Yes</button>"];
+        var options007 = ["<button class=buttons001 onclick=q1c()>Yes</button><br /><br /><button class=buttons001 onclick=q1i()>No</button>"];
+        var options008 = ["<button class=buttons001 onclick=q1c()>No</button><br /><br /><button class=buttons001 onclick=q1i()>Yes</button>"];
+        var options009 = ["<button class=buttons001 onclick=q1c()>Yes</button><br /><br /><button class=buttons001 onclick=q1i()>No</button>"];
+        var options010 = ["<button class=buttons001 onclick=q1i()>Yes</button><br /><br /><button class=buttons001 onclick=q1c()>No</button>"];
 
-time.sleep(0.5)
-scroll("Let's begin. First, what is the name of the server\nyou'd like to lag/dupe on?\n>>> ")
-myServer = input()
+        var a = 0;
+        a++;
+        var b = 0;
+        b++;
 
-time.sleep(1.0)
-scroll("I see. Your server is " + myServer + "?\nThe first step is to answer a few questions about " + myServer)
+        function begin001() {
+            disappear001.innerHTML = "";
+            message001.innerHTML = question001[0];
+            message002.innerHTML = options001;
+            number001.innerHTML = a++;
+        }
 
-scroll("\nDoes this server sell /fly or /god? Answer Yes or No.\n>>> ")
-Selection1 = input()
-if Selection1 == ("Yes"):
-	scroll("Interesting. /fly and/or /god are both hallmarks of a P2W server. Let's check the other perks as well.")
-if Selection1 == ("No"):
-	scroll("I see.")
+        function q1c() {
+            message003.innerHTML = "Yes, this is an aspect of P2W";
+            message002.innerHTML = "";
+            score001.innerHTML = b++;
+            message004.innerHTML = "<button class=buttons002 onclick=next001()>Next</button>";
+        }
 
-time.sleep(1.5)
-os.system('clear')
+        function q1i() {
+            message003.innerHTML = "No, this server doesn't have this feature of P2W";
+            message002.innerHTML = "";
+            message004.innerHTML = "<button class=buttons002 onclick=next001()>Next</button>";
+        }
 
-scroll("Alright, second question. Does this server sell kits containing armour and/or tools? For instance, a kit that sells enchanted diamond armour? Answer Yes or No\n>>> ")
-Selection2 = input()
+        function next001() {
+            if (a == "2") {
+                message001.innerHTML = question001[1];
+                message002.innerHTML = options002;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-if Selection2 == ("Yes"):
-	scroll("Kits are often a big sign of P2W servers. That, and /fly or /god, are huge signs of a P2W server. Especially look out for kits that are incredibly OP, or contain non-vanilla items or enchants")
+            else if (a == "3") {
+                message001.innerHTML = question001[2];
+                message002.innerHTML = options003;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-if Selection2 == ("No"):
-	scroll("Kits are a big sign of P2W, but just because they aren't there, doesn't mean it isn't P2W.")
+            else if (a == "4") {
+                message001.innerHTML = question001[3];
+                message002.innerHTML = options004;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-time.sleep(2.0)
-os.system('clear')
+            else if (a == "5") {
+                message001.innerHTML = question001[4];
+                message002.innerHTML = options005;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-scroll("Alright! The last question is, can you buy in-game currency from the server shop? For instance, MCMMO coins/cash, gems, etc.? Answer Yes or No\n>>> ")
+            else if (a == "6") {
+                message001.innerHTML = question001[5];
+                message002.innerHTML = options006;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-Selection3 = input()
+            else if (a == "7") {
+                message001.innerHTML = question001[6];
+                message002.innerHTML = options007;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-if Selection3 == ("Yes"):
-	scroll("Selling in-game currency for real money is a huge sign of P2W. Coupled with other things, the server is almost certainly P2W.\n")
+            else if (a == "8") {
+                message001.innerHTML = question001[7];
+                message002.innerHTML = options008;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
 
-if Selection3 == ("No"):
-	scroll("Currency isn't the most common thing to be sold. It breaks a server's economy.")
+            else if (a == "9") {
+                message001.innerHTML = question001[8];
+                message002.innerHTML = options009;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            }
+
+            else if (a == "10") {
+                message001.innerHTML = question001[9];
+                message002.innerHTML = options010;
+                message003.innerHTML = "";
+                number001.innerHTML = a++;
+                message004.innerHTML = "";
+            } else {
+                message001.innerHTML = "If you got a score less than 2, it's not paid to win, if 3-6 then it is semi paid to win, if it is 7-10, it is very paid to win";
+                message002.innerHTML = "";
+                message003.innerHTML = "";
+                message004.innerHTML = "<button class=buttons002 onclick=repeat001()> lag</button>";
+            }
+        }
+
+        function repeat001() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
 
 
-time.sleep(1.0)
-scroll("If you answered Yes to all the questions, the server you are looking at is almost certainly P2W.")
-
-time.sleep(0.5)
-scroll("\nIf you only answered yes to 1 or 2 questions, the server is likely semi-P2W, or offers other P2W features.")
-
-time.sleep(0.5)
-scroll("If you answered No to all the questions, the server is likely not P2W.\nIf you have any questions or concerns, ask your mentor for help.")
-
-print("\n\nThanks for using WG's P2W checker!")
-
-## 1.1 Patch Notes: 
-# Changed True and False to Yes and No
-# Added Text Scroll to the final segment of text
-# I will add more questions later 
-# If I should add more notes explaining what each line of code means, @ me on Guilded
