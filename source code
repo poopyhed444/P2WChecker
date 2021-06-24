@@ -69,7 +69,7 @@
         var options003 = ["<button class=buttons001 onclick=q1c()>Yes</button><br /><br /><button class=buttons001 onclick=q1i()>No</button>"];
         var options004 = ["<button class=buttons001 onclick=q1i()>Yes</button><br /><br /><button class=buttons001 onclick=q1c()>No</button>"];
         var options005 = ["<button class=buttons001 onclick=q1c()>No</button><br /><br /><button class=buttons001 onclick=q1i()>Yes</button>"];
-        var options006 = ["<button class=buttons001 onclick=q1i()>Yes</button><br /><br /><button class=buttons001 onclick=q1c()>Yes</button>"];
+        var options006 = ["<button class=buttons001 onclick=q1i()>No</button><br /><br /><button class=buttons001 onclick=q1c()>Yes</button>"];
         var options007 = ["<button class=buttons001 onclick=q1c()>Yes</button><br /><br /><button class=buttons001 onclick=q1i()>No</button>"];
         var options008 = ["<button class=buttons001 onclick=q1c()>No</button><br /><br /><button class=buttons001 onclick=q1i()>Yes</button>"];
         var options009 = ["<button class=buttons001 onclick=q1c()>Yes</button><br /><br /><button class=buttons001 onclick=q1i()>No</button>"];
